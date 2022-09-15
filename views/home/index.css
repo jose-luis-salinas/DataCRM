@@ -1,0 +1,23 @@
+.container {
+    width: 100%;
+    min-height: 100%;
+    height: auto;
+    padding: 5%;
+}
+
+.container .btn-load {
+    width: 100px;
+    height: 50px;
+    display: block;
+    float: right;
+    margin-bottom: 10px;
+    background-color: #0d6efd;
+    color: white;
+    font-size: 18px;
+}
+
+.container table thead,
+.container table tbody {
+    border: 1px solid #E7E9EB;
+    border-radius: 5px;
+}

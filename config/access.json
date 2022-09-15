@@ -1,0 +1,22 @@
+{
+    "sites" : [
+        {
+            "site" : "",
+            "access" : "public",
+            "role" : ""
+        },
+        {
+            "site" : "home",
+            "access" : "private",
+            "role" : "Admin"
+        },
+        {
+            "site" : "login",
+            "access" : "public",
+            "role" : ""
+        }
+    ],
+    "default-sites" : {
+        
+    }
+}
