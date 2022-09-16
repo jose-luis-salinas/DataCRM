@@ -86,6 +86,7 @@
         private function getCurrentPage(){
             $actualLink = trim("$_SERVER[REQUEST_URI]");
             $url = explode("/", $actualLink);
+            error_log("URL DE HEROKU: " . $_SERVER["REQUEST_URI"]);
 
             return $url[1];
         }
