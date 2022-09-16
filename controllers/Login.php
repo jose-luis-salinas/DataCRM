@@ -15,6 +15,7 @@
             $sessionData = $this->model->signIn();
 
             if ($sessionData != null){
+                error_log("INICIO SESION CON EXITO");
                 $this->initialize($sessionData);
             } else {
                 $this->redirect("", []);
