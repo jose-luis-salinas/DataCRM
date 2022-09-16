@@ -7,8 +7,8 @@
         },
         {
             "site" : "home",
-            "access" : "private",
-            "role" : "Admin"
+            "access" : "public",
+            "role" : ""
         },
         {
             "site" : "login",
@@ -17,6 +17,6 @@
         }
     ],
     "default-sites" : {
-        "Admin" : "home"
+        
     }
 }

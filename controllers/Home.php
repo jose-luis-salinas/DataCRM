@@ -1,14 +1,12 @@
 <?php
 
-    class Home extends SessionController {
-
-        private $sessionName;
+    class Home extends BaseController {
 
         public function __construct()
         {
             parent::__construct();
 
-            $this->sessionName = $this->getSessionData();
+            //$this->sessionName = $this->getSessionData();
 
             error_log("Es::Construct => Inicio de ES");
         }
@@ -21,7 +19,7 @@
         }
 
         function data(){
-            $this->model->getData($this->sessionName["sessionID"]);
+            $this->model->getData();
         }
 
     }

@@ -94,8 +94,7 @@ class DataCRM
     {
         return json_encode(array(
             "token" => $this->token,
-            "sessionID" => $this->sessionID,
-            "role" => "Admin"
+            "sessionID" => $this->sessionID
         ));
     }
 }

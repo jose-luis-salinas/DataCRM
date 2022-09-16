@@ -11,11 +11,11 @@
             if (empty($url[0])){
                 error_log("App:Construct => No hay controlador especifico");
                 
-                $controller = 'controllers/Login.php';
+                $controller = 'controllers/Home.php';
                 require $controller;
 
-                $controller = new Login();
-                $controller->getModel("Login");
+                $controller = new Home();
+                $controller->getModel("Home");
                 $controller->render();
 
                 return false;
