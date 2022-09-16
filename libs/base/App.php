@@ -22,6 +22,7 @@
             }
 
             $controller = 'controllers/' . $url[0] . ".php";
+            error_log("NUEVO CONTROLADOR: " . $url[0]);
 
             if (file_exists($controller)){
                 require $controller;
