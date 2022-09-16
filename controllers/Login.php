@@ -17,7 +17,7 @@
             if ($sessionData != null){
                 $this->initialize($sessionData);
             } else {
-                $this->redirect("", "");
+                $this->redirect("", []);
             }
         }
 

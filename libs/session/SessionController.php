@@ -84,7 +84,7 @@
         }
 
         private function getCurrentPage(){
-            $actualLink = trim($_SERVER["REQUEST_URI"]);
+            $actualLink = trim("$_SERVER[REQUEST_URI]");
             $url = explode("/", $actualLink);
 
             return $url[2];
