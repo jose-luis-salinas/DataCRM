@@ -87,7 +87,7 @@
             $actualLink = trim("$_SERVER[REQUEST_URI]");
             $url = explode("/", $actualLink);
 
-            return $url[2];
+            return $url[0];
         }
 
         private function isAuthorized($pRole){
