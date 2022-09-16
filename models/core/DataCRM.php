@@ -33,7 +33,7 @@ class DataCRM
             curl_close($this->curl);
         }
 
-        if ($this->token != null){
+        if ($this->token != null) {
             return true;
         }
 
@@ -42,7 +42,7 @@ class DataCRM
 
     function login()
     {
-        $this->token = md5($this->token . "NjgqBSndcSfOSM9w");
+        $this->token = md5($this->token . "3DlKwKDMqPsiiK0B");
 
         curl_setopt_array($this->curl, array(
             CURLOPT_URL => 'https://develop.datacrm.la/anieto/anietopruebatecnica/webservice.php',
@@ -53,13 +53,15 @@ class DataCRM
             CURLOPT_FOLLOWLOCATION => true,
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'POST',
-            CURLOPT_POSTFIELDS => 'operation=login&username=prueba&accessKey=' . $this->token . '',
+            CURLOPT_POSTFIELDS => 'operation=login&username=prueba&accessKey=' . $this->token,
             CURLOPT_HTTPHEADER => array(
                 'Content-Type: application/x-www-form-urlencoded'
             ),
         ));
 
-        $this->sessionID = json_decode(curl_exec($this->curl), true)["result"]["sessionId"];
+        $response = json_decode(curl_exec($this->curl), true);
+
+        $this->sessionID = $response["result"]["sessionName"];
 
         curl_close($this->curl);
 
@@ -70,11 +72,29 @@ class DataCRM
         return false;
     }
 
+    function data($session)
+    {
+        curl_setopt_array($this->curl, array(
+            CURLOPT_URL => 'https://develop.datacrm.la/anieto/anietopruebatecnica/webservice.php?operation=query&sessionName=' . $session . '&query=select%20*%20from%20Contacts;',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'GET',
+        ));
+
+        $response = json_decode(curl_exec($this->curl), true);
+
+        return $response;
+    }
+
     function serialize()
     {
         return json_encode(array(
-            "token" => $this->token, 
-            "sessionID" => $this->sessionID, 
+            "token" => $this->token,
+            "sessionID" => $this->sessionID,
             "role" => "Admin"
         ));
     }

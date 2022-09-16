@@ -2,9 +2,13 @@
 
     class Home extends SessionController {
 
+        private $sessionName;
+
         public function __construct()
         {
             parent::__construct();
+
+            $this->sessionName = $this->getSessionData();
 
             error_log("Es::Construct => Inicio de ES");
         }
@@ -17,7 +21,7 @@
         }
 
         function data(){
-            echo json_encode($this->model->getData());
+            $this->model->getData($this->sessionName["sessionID"]);
         }
 
     }

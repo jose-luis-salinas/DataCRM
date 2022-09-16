@@ -62,8 +62,8 @@
             return true;
         }
 
-        private function getSessionData(){
-            return $this->session->getCurrentUser();
+        public function getSessionData(){
+            return json_decode($this->session->getCurrentUser(), true);
         }
 
         private function isPublic(){

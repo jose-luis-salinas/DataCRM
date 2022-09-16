@@ -9,8 +9,10 @@
             
         }
 
-        function getData(){
+        function getData($sessionName){
             $dataCRM = new DataCRM();
+            $contacts = $dataCRM->data($sessionName)["result"];
+            echo json_encode($contacts);
         }
 
     }
