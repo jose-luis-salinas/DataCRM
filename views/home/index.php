@@ -12,9 +12,6 @@
 
 <body>
     <div class="container">
-        <a href="./login/leave" class="card btn btn-red center">
-            Logout
-        </a>
         <button class="card btn center" id="loadContacts" type="button">
             <p>Load</p>
             <span class="center">

@@ -1,8 +1,8 @@
 <?php
 
-    define("URL", "https://prueba-data-crm.herokuapp.com/");
-    define("PATH", "https://prueba-data-crm.herokuapp.com/");
-
-    define("IP", "192.168.101.8");
+    /**
+     *  Constante de la ruta **URL** donde se aloja la aplicación Web.
+     */
+    define("URL", "http://localhost/DataCRM/");
 
 ?>

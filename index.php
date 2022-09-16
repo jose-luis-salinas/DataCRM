@@ -1,19 +1,24 @@
 <?php
 
-    error_reporting(E_ALL); // Error/Exception engine, always use E_ALL
+    /**
+     *  Función que me permite capturar todos los errores PHP generados y me permite
+     *  que errores notificar.
+     */
+    error_reporting(E_ALL);
 
-    ini_set("ignore_repeated_errors", TRUE); // Always use TRUE
-    ini_set("display_errors", FALSE); // Error/Exception display, use FALSE only in production
-    ini_set("log_errors", TRUE); // Error/Exception file logging engine
-    ini_set("error_log", "C:/xampp\htdocs\DataCRM/php-error.log");
+    /**
+     *  Función que me permite ignorar los errores que se puedan repetir.
+     */
+    ini_set("ignore_repeated_errors", TRUE);
 
-    error_log("Run App");
+    /**
+     *  Función que me permite ocultar los errores generados que no se notificarán
+     */
+    ini_set("display_errors", FALSE);
 
-    //! LIBRARY
-    require 'libs/base/App.php';
-    require 'libs/base/BaseController.php';
-    require 'libs/base/View.php';
-    require 'libs/session/SessionController.php';
+    require 'libs/App.php';
+    require 'libs/BaseController.php';
+    require 'libs/View.php';
 
     require 'config/settings.php';
 

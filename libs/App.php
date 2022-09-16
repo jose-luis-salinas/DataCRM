@@ -1,7 +1,18 @@
 <?php
 
+    /**
+     *  Clase que me permitirá crear la aplicación web de acuerdo a un controlador usado,
+     *  cargará el modelo y la vista del mismo
+     * 
+     *  @author Jose Luis González Salinas
+     */
     class App {
 
+        /**
+         *  Constructor de la aplicación que me permitirá crear la **App** de acuerdo a
+         *  la configuración del controlador obtenido, creará un objeto del controlador y a
+         *  través de éste cargará el modelo y renderizará la vista.
+         */
         function __construct()
         {
             $url = isset($_GET["url"]) ? $_GET["url"] : null;
@@ -9,8 +20,6 @@
             $url = explode("/", $url);
 
             if (empty($url[0])){
-                error_log("App:Construct => No hay controlador especifico");
-                
                 $controller = 'controllers/Home.php';
                 require $controller;
 
@@ -43,16 +52,10 @@
                         } else {
                             $controller->{$url[1]}();
                         }
-                    } else {
-                        // require_once 'controllers/errores.php';
-                        // $controller = new Errores();
                     }
                 } else {
                     $controller->render();
                 }
-            } else {
-                // require_once 'controllers/errores.php';
-                // $controller = new Errores();
             }
         }
     }

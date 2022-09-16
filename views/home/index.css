@@ -16,10 +16,6 @@
     font-size: 18px;
 }
 
-.container .btn-red {
-    background-color: red;
-}
-
 .container .btn span {
     display: none;
 }
