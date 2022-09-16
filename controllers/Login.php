@@ -13,6 +13,7 @@
 
         function auth(){
             $sessionData = $this->model->signIn();
+            error_log("USANDO EL METODO AUTH");
 
             if ($sessionData != null){
                 error_log("INICIO SESION CON EXITO");
