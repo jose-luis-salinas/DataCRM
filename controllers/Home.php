@@ -8,11 +8,11 @@
 
             //$this->sessionName = $this->getSessionData();
 
-            error_log("Es::Construct => Inicio de ES");
+            error_log("Home::Construct => Inicio de Home");
         }
 
         function render(){
-            $this->view->render("Home/index", [
+            $this->view->render("home/index", [
             ]);
             
             error_log("Home::render => Carga el index de Home");
