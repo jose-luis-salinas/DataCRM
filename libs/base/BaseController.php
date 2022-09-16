@@ -63,7 +63,7 @@
                 $params = "?" . $params;
             }
 
-            header("Location: " . URL . "/" . $pRoute . $params);
+            header("Location: " . URL . $pRoute . $params);
         }
     }
 

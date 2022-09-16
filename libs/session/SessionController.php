@@ -36,16 +36,20 @@
             if ($this->existsSession()){
                 $role = $this->getSessionData()["role"];
 
-                if ($role == "Admin"){
-
+                if ($this->isPublic()){
+                    $this->redirectDefaultSiteByRole($role);
                 } else {
-                    $this->redirect("", "");
+                    if ($this->isAuthorized($role)){
+
+                    } else {
+                        $this->redirectDefaultSiteByRole($role);
+                    }
                 }
             } else {
                 if ($this->isPublic()){
 
                 } else {
-                    $this->redirect("", "");
+                    $this->redirect("", []);
                 }
             }
         }
@@ -69,7 +73,6 @@
         private function isPublic(){
             $currentURL = $this->getCurrentPage();
             $currentURL = preg_replace("/\?.*/", "", $currentURL);
-            error_log("CURRENT URL: " . $currentURL);
 
             for($i = 0; $i < sizeof($this->sites); $i++){
                 if ($currentURL == $this->sites[$i]["site"] && $this->sites[$i]["access"] == "public"){
@@ -81,15 +84,49 @@
         }
 
         private function getCurrentPage(){
-            $actualLink = trim("$_SERVER[REQUEST_URI]");
+            $actualLink = trim($_SERVER["REQUEST_URI"]);
             $url = explode("/", $actualLink);
 
             return $url[2];
         }
 
+        private function isAuthorized($pRole){
+            $currentURL = $this->getCurrentPage();
+            $currentURL = preg_replace("/\?.*/", "", $currentURL);
+
+            for($i = 0; $i < sizeof($this->sites); $i++){
+                if ($currentURL == $this->sites[$i]["site"] && $this->sites[$i]["role"] == $pRole){
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        private function redirectDefaultSiteByRole($role){
+            $url = "";
+
+            for($i = 0; $i < sizeof($this->sites); $i++){
+                if ($this->sites[$i]["role"] == $role){
+                    $url = "/" . $this->sites[$i]["site"];
+                    break;
+                }
+            }
+
+            header("Location: " . URL . $url);
+        }
+
         function initialize($data){
             $this->session->setCurrentUser($data);
-            $this->redirect("home", "");
+            $this->authorizedAccess(json_decode($data, true)["role"]);
+        }
+
+        function authorizedAccess($pRole){
+            switch($pRole){
+                case "Admin":
+                    $this->redirect($this->defaultSites["Admin"], []); //! FALTA 
+                    break;
+            }
         }
 
         function logout(){

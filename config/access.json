@@ -17,6 +17,6 @@
         }
     ],
     "default-sites" : {
-        
+        "Admin" : "home"
     }
 }
