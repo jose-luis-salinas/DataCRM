@@ -1,7 +1,7 @@
 <?php
 
-    define("URL", "http://192.168.101.8/DataCRM");
-    define("PATH", "http://192.168.101.8/DataCRM/");
+    define("URL", "https://prueba-data-crm.herokuapp.com/");
+    define("PATH", "https://prueba-data-crm.herokuapp.com/");
 
     define("IP", "192.168.101.8");
 
