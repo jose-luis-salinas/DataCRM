@@ -69,6 +69,7 @@
         private function isPublic(){
             $currentURL = $this->getCurrentPage();
             $currentURL = preg_replace("/\?.*/", "", $currentURL);
+            error_log("CURRENT URL: " . $currentURL);
 
             for($i = 0; $i < sizeof($this->sites); $i++){
                 if ($currentURL == $this->sites[$i]["site"] && $this->sites[$i]["access"] == "public"){
